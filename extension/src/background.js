@@ -138,7 +138,11 @@ const listen = () => {
           case 'get-address':
             res = await rpcCall({ ...walletOptions, method: 'GetAddress' })
             break
+          case 'get-transfer-by-txid':
+            res = await rpcCall({ ...walletOptions, method: 'GetTransferbyTXID', params: args })
+            break
           case 'start-transfer':
+
             const transferStateId = nanoid()
             const promise = new Promise((resolve, reject) => {
               transferStateMap.set(transferStateId, {
